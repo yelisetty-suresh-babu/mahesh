@@ -57,7 +57,10 @@ const App = () => {
       setError("");
       console.log("Filter and Input:", filter, parsedInput);
 
-      const res = await axios.post("http://localhost:3000/bfhl", parsedInput);
+      const res = await axios.post(
+        "https://mahesh-42ok.onrender.com/bfhl",
+        parsedInput
+      );
 
       console.log(res.data);
 
