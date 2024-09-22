@@ -7,7 +7,7 @@ app.use(cors());
 
 app.post("/bfhl", (req, res) => {
   try {
-    const requestBody = req.body; 
+    const requestBody = req.body;
 
     if (!requestBody || !Array.isArray(requestBody.data)) {
       return res
@@ -15,16 +15,13 @@ app.post("/bfhl", (req, res) => {
         .json({ error: "Invalid JSON format. 'data' should be an array." });
     }
 
-
     const alpha = requestBody.data.filter((item) => isNaN(item));
     const nums = requestBody.data.filter((item) => !isNaN(item));
 
-
     const lowerCaseAlphabets = alpha.filter((item) => /^[a-z]$/.test(item));
     const highestLowerCaseAlphabet = lowerCaseAlphabets.length
-      ? [lowerCaseAlphabets.sort().reverse()[0]] 
+      ? [lowerCaseAlphabets.sort().reverse()[0]]
       : [];
-
 
     let fileInfo = {
       file_valid: false,
@@ -34,7 +31,7 @@ app.post("/bfhl", (req, res) => {
       const base64String = requestBody.file_b64;
       const buffer = Buffer.from(base64String, "base64");
 
-      const fileType = "application/octet-stream"; 
+      const fileType = "application/octet-stream";
       const fileSize = buffer.length;
 
       fileInfo = {
@@ -44,12 +41,11 @@ app.post("/bfhl", (req, res) => {
       };
     }
 
-
     return res.json({
       is_success: true,
-      user_id: "abd_17122002",
-      college_email_id: "abd@srmap.edu.in",
-      college_roll_no: "AP21110011283",
+      user_id: "YelisettyMohanMahesh_18112003",
+      college_email_id: "Mohan_yelisetty@srmap.edu.in",
+      college_roll_no: "AP21110010154",
       numbers: nums,
       alphabets: alpha,
       highest_lowercase_alphabet: highestLowerCaseAlphabet,
